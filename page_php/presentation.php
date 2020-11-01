@@ -25,7 +25,7 @@ session_start();
                         <?php
 
                         try {
-                            $req = $bdd->prepare("SELECT nom,prenom FROM users WHERE type = 'eleve' AND id != :id ");
+                            $req = $bdd->prepare("SELECT * FROM users WHERE type = 'eleve' AND id != :id");
                             $req->execute(array(
                                 'id' => $_SESSION['id']
                             ));

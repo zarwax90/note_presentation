@@ -20,7 +20,6 @@ session_start();
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Présentateur</th>
-                <th scope="col">Évaluateur</th>
                 <th scope="col">Attitude</th>
                 <th scope="col">Voix</th>
                 <th scope="col">Présentation</th>
@@ -31,7 +30,7 @@ session_start();
             <?php
 
             try {
-                $req = $bdd->prepare("SELECT * FROM notes ORDER BY pres");
+                $req = $bdd->prepare("SELECT pres, ROUND (AVG(attitude),2) AS attitude, ROUND (AVG(voix),2) AS voix, ROUND (AVG(presentation),2) AS presentation, ROUND (AVG(fond),2) AS fond FROM notes GROUP BY pres");
                 $req->execute();
             } catch (exception $e) {
                 die("Erreur de type " . $e->getMessage());
@@ -40,9 +39,8 @@ session_start();
             while ($donnees = $req->fetch()) {
             ?>
                 <tr>
-                    <th scope="row"><?php echo $donnees['id'] ?></th>
+                    <th scope="row"></th>
                     <td><?php echo $donnees['pres'] ?></td>
-                    <td><?php echo $donnees['user'] ?></td>
                     <td><?php echo $donnees['attitude']; ?></td>
                     <td><?php echo $donnees['voix']; ?></td>
                     <td><?php echo $donnees['presentation']; ?></td>

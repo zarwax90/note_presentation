@@ -14,7 +14,6 @@ session_start();
 
 <body>
     <?php
-    include("navbar.php");
 
     if (isset($_SESSION['id'])) {
         // récupération des variables du formulaire 

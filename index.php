@@ -36,7 +36,7 @@ session_start();
                             <a class="nav-link" href="page_php/viewNote.php">Voir toutes les notes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="page_php/mesNotes.php">Voir les moyennes</a>
+                            <a class="nav-link" href="page_php/moyenne.php">Voir les moyennes</a>
                         </li>
                     <?php } else {
                     } ?>

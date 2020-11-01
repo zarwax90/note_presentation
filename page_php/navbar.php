@@ -21,7 +21,7 @@ include '../php/connexionBdd.php';
                         <a class="nav-link" href="viewNote.php">Voir toutes les notes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mesNotes.php">Voir les moyennes</a>
+                        <a class="nav-link" href="moyenne.php">Voir les moyennes</a>
                     </li>
                 <?php } else {} ?>
 
