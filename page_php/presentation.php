@@ -19,13 +19,13 @@ session_start();
         <form method="POST" action="../php/note.php">
             <div class="form-row">
                 <div class="form-group col-md-3.5">
-                    <label for="inputState">Utilisateur</label>
+                    <label for="inputState">Présentateur</label>
                     <select id="inputState" name="pres" class="form-control" required>
                         <option value="" disabled selected>--Selectionner un présentateur--</option>
                         <?php
 
                         try {
-                            $req = $bdd->prepare("SELECT * FROM users WHERE type = 'eleve' AND id != :id");
+                            $req = $bdd->prepare("SELECT nom,prenom FROM users WHERE type = 'eleve' AND id != :id ");
                             $req->execute(array(
                                 'id' => $_SESSION['id']
                             ));
