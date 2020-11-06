@@ -15,6 +15,9 @@ session_start();
 <body>
     <?php include("navbar.php"); ?>
 
+    </br>
+    <p class="text-center"><samp>Les moyennes sont calculées de la manière suivante : (moyennes des notes des élèves + note prof)/2</samp></p>
+    
     <table class="table">
         <thead>
             <tr>
@@ -30,21 +33,32 @@ session_start();
             <?php
 
             try {
-                $req = $bdd->prepare("SELECT pres, ROUND (AVG(attitude),2) AS attitude, ROUND (AVG(voix),2) AS voix, ROUND (AVG(presentation),2) AS presentation, ROUND (AVG(fond),2) AS fond FROM notes GROUP BY pres");
+                $req = $bdd->prepare("SELECT pres, ROUND (AVG(attitude),2) AS attitude, ROUND (AVG(voix),2) AS voix, ROUND (AVG(presentation),2) AS presentation, ROUND (AVG(fond),2) AS fond FROM notes WHERE user != 'ROUMANET David' GROUP BY pres");
                 $req->execute();
             } catch (exception $e) {
                 die("Erreur de type " . $e->getMessage());
             }
-
+            try {
+                $req2 = $bdd->prepare("SELECT pres,attitude,voix,presentation,fond FROM notes WHERE user = 'ROUMANET David' GROUP BY pres");
+                $req2->execute();
+            } catch (exception $e) {
+                die("Erreur de type " . $e->getMessage());
+            }
+            $donnees2 = $req2->fetch();
             while ($donnees = $req->fetch()) {
+                $attitude = ($donnees['attitude'] + $donnees2['attitude']) / 2;
+                $voix = ($donnees['voix'] + $donnees2['voix']) / 2;
+                $presentation = ($donnees['presentation'] + $donnees2['presentation']) / 2;
+                $fond = ($donnees['fond'] + $donnees2['fond']) / 2;
             ?>
+
                 <tr>
                     <th scope="row"></th>
-                    <td><?php echo $donnees['pres'] ?></td>
-                    <td><?php echo $donnees['attitude']; ?></td>
-                    <td><?php echo $donnees['voix']; ?></td>
-                    <td><?php echo $donnees['presentation']; ?></td>
-                    <td><?php echo $donnees['fond']; ?></td>
+                    <td><?php echo $donnees['pres']; ?></td>
+                    <td><?php echo $attitude  ?></td>
+                    <td><?php echo $voix ?></td>
+                    <td><?php echo $presentation ?></td>
+                    <td><?php echo $fond ?></td>
                 </tr>
             <?php
             }
