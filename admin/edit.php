@@ -1,5 +1,5 @@
 <?php
-include 'connexionBdd.php';
+include '../php/connexionBdd.php';
 
 // récupération des variables du formulaire 
 $id = $_POST['id'];
@@ -21,4 +21,4 @@ try {
 }
 
 
-header('Location: ../page_php/editCompte.php');
+header('Location: editCompte.php');

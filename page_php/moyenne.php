@@ -17,7 +17,7 @@ session_start();
 
     </br>
     <p class="text-center"><samp>Les moyennes sont calculées de la manière suivante : (moyennes des notes des élèves + note prof)/2</samp></p>
-    
+
     <table class="table">
         <thead>
             <tr>
@@ -27,6 +27,7 @@ session_start();
                 <th scope="col">Voix</th>
                 <th scope="col">Présentation</th>
                 <th scope="col">Fond</th>
+                <th scope="col">Moyenne</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@ session_start();
                 $voix = ($donnees['voix'] + $donnees2['voix']) / 2;
                 $presentation = ($donnees['presentation'] + $donnees2['presentation']) / 2;
                 $fond = ($donnees['fond'] + $donnees2['fond']) / 2;
+                $moyenne = $attitude + $voix + $presentation + $fond
             ?>
 
                 <tr>
@@ -59,6 +61,7 @@ session_start();
                     <td><?php echo $voix ?></td>
                     <td><?php echo $presentation ?></td>
                     <td><?php echo $fond ?></td>
+                    <td><?php echo $moyenne ?></td>
                 </tr>
             <?php
             }

@@ -15,10 +15,9 @@ include '../php/connexionBdd.php';
 </head>
 
 <body>
-    <?php include("navbar.php"); ?>
     
     <div class="container">
-        <form method="POST" action="../php/edit.php">
+        <form method="POST" action="edit.php">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Utilisateur</label>
