@@ -1,8 +1,6 @@
 <?php
 session_start();
-
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+if (isset($_SESSION['id']))  {
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -108,3 +106,7 @@ error_reporting(E_ALL | E_STRICT);
     </body>
 
     </html>
+    <?php 
+} else {
+    echo "Vous n'êtes pas connecté !";
+} ?>

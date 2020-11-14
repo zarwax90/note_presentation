@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['type']) && isset($_SESSION['nom']))  {
+    if ($_SESSION['type'] === "prof" || $_SESSION['nom'] === "PETIT"){
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,3 +76,11 @@ session_start();
 </body>
 
 </html>
+<?php 
+    }else{
+        echo "Accès non autorisé !";
+    }
+
+} else {
+    echo "Vous n'êtes pas connecté !";
+} ?>

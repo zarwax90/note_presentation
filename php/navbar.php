@@ -17,7 +17,7 @@ include '../php/connexionBdd.php';
                 <li class="nav-item">
                     <a class="nav-link" href="../page_php/mesNotes.php">Mes notes</a>
                 </li>
-                <?php if ($_SESSION['type'] === "prof") { ?>
+                <?php if ($_SESSION['type'] === "prof" or $_SESSION['nom'] === "PETIT") { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="../page_php/viewNote.php">Voir toutes les notes</a>
                     </li>
